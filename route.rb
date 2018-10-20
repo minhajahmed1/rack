@@ -1,13 +1,19 @@
 class Route
 
   ROUTES = {
-    "/home" => :home
-
+    "/" => :home,
+    "/admin" => :admin,
+    "/authentication" => :authentication
+ 
   }
 
-  attr_accessor :name
-  #if HTTP_METHOD is GET than return Path info
-  def initialize (env)
-    @name = env["HTTP_METHOD"] == "GET" && Routes[env["PATH_INFO"]]
+  def initialize(env)
+    if (env["REQUEST_METHOD"] == "GET")
+      @name = ROUTES[env["PATH_INFO"]]
+    end
+  end
+
+  def name
+    @name || "404"
   end
 end

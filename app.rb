@@ -1,9 +1,8 @@
 require 'rack'
 require_relative 'route'
-require_relative 'view'
+require_relative 'template'
 
 class App
-  PAGES = %w{ /home }
 
   def call(env)
     response_headers = {}
@@ -11,12 +10,13 @@ class App
    
 
     request_cookies = Rack::Utils.parse_cookies(env)
-    # set the session identifier if one doesn't already exist
     route = Route.new(env)
     status = route.name =~ /^\d\d\d$/ ? route.name.to_i : 200
     template = Template.new(route.name, visit_count: request_cookies["session_count"].to_i+1)
 
-    [status, response_headers [template.render]]
+    [status, response_headers, [template.render]]
+  end
+end
 
-Rack::Handler::WEBrick.run App.new
+
 
