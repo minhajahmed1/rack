@@ -1,72 +1,39 @@
 require 'sinatra/base'
 require 'rack'
 require 'erb'
-
-
+require 'json'
+require_relative 'app'
+require_relative 'route'
 class Admin < Sinatra::Base
 
-	def admin
 
-	end
-    
 
-  
+hi = File.foreach("answers.json").map { |x| JSON.parse(x) }
+
+
+# tried to loop over hash but will not display and loop displays data twice in terminal
+hi.each do |person|
+  person.each do |key,value|
+    puts "the key is #{key} and the value is the #{value}"
+  end
+end
 
   use Rack::Auth::Basic, "Protected Area" do |username, password|
     username == 'minhaj' && password == 'minhaj'
   end
 
   get '/'  do
-  	"<div>hi for some reason I don't need to put this in a string #{5+5}</div>
-  		<p>
-  		</div>hello</div>
-  		</p>
 
-  	"
+    "#{hi.each do |person|
+    person.each do |key,value|
+    puts "the key is #{key} and the value is the #{value}"
+  end
+end
+}"
+    
+ 
+
   end
 
 end
-
-# class Public < Sinatra::Base
-# 	get '/' do
-#     	"public"
-#  	end
-
-# end
-
-
-
-
-
-
-
-#class Protected < Sinatra::Base
-
-#   use Rack::Auth::Basic, "Protected Area" do |username, password|
-#     username == 'foo' && password == 'bar'
-#   end
-
-#   get '/' do
-#     "secret"
-#   end
-
-#   get '/another' do
-#     "another secret"
-#   end
-# end
-
-# class Public < Sinatra::Base
-# 	get '/' do
-#     	"public"
-#  	end
-
-# end
-
-
-
-
-
-
-
-
 

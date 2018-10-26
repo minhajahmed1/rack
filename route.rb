@@ -1,19 +1,20 @@
 class Route
-
   ROUTES = {
-    "/" => :home,
-    "/admin" => :admin,
-    "/authentication" => :authentication
- 
+    "GET" => {
+      "/"  => :home,
+      "/admin"  => :admin,
+      "/authentication" => :authentication,
+    },
+    "POST" => {
+      "/" => :check
+    }
   }
 
-  def initialize(env)
-    if (env["REQUEST_METHOD"] == "GET")
-      @name = ROUTES[env["PATH_INFO"]]
-    end
-  end
+  attr_accessor :name
 
-  def name
-    @name || "404"
+  def initialize(env)
+    path = env["PATH_INFO"]
+    http_method = env["REQUEST_METHOD"]
+    @name = (ROUTES[http_method] && ROUTES[http_method][path]) || :not_found
   end
 end

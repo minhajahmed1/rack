@@ -1,12 +1,72 @@
 <html>
 <head>
-	<title></title>
+	<title>Random Survey :)</title>
+	<link rel="stylesheet" type="text/css" href="stylesheet/style.css">
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
 <body>
-	<h1>test</h1>
-	<p>heres how many time you've visted our site <%= visit_count %> </p>
+
+	<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #eaeaea;">
+	  
+
+	  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+	    <ul class="navbar-nav mr-auto">
+	      <li class="nav-item active ">
+	        <div id="navName"><a class="nav-link" href="/">RandomCo <span class="sr-only">(current)</span></a></div>
+	      </li>
+	    </ul>
+	    <ul class="nav navbar-nav navbar-right">
+	      <li class="nav-item active " id="adminLink">
+	        <a class="nav-link" href="/admin">admin login <span class="sr-only">(current)</span></a>
+	      </li>
+	    </ul>
+
+	  </div>
+	</nav>		
 
 
 
+
+
+	<h1 id="title">Random Survey</h1>
+	<div class="jumbotron">
+		<div class="form">
+	     <form method="post">
+	       <div class="form-group">
+
+	       	 <input type="radio"  value="employed" name="employability" required>
+	         <label for="employability">employed</label>
+	         <input type="radio"  value="unemployed" name="employability" required>
+	         <label for="employability">unemployed</label><br>
+	       </div>
+	    
+	    <div class="form-group">
+	         <label for="nationality" >Nationality:</label>
+	         <select id="nationality" class="form-control-sm" name="nationality"required>
+	          <option value="Canadian" required>Canadian</option>
+	          <option value="other" required>Other</option>
+	         </select>
+	    </div>
+	    
+	    <div class="form-group">
+    		<label for="income">Income:</label><br>
+    		<input type="number" class="form-control-sm" id="income" name="income"required>
+  		</div>
+
+	    <div class="form-group">  
+	      <label for="email">Email address:</label><br>
+    	  <input type="email" class="form-control-sm" id="email" placeholder="Enter email" name="email" required>
+    	</div><br>
+	      
+	      <button type="submit" class="btn btn-primary">Submit</button>
+	     </form>
+	  </div>
+  </div>
+
+
+
+
+<p>Times Visited: <%= visit_count %></p>
 </body>
 </html>

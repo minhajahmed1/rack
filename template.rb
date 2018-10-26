@@ -13,7 +13,23 @@ class Template
     @data[:visit_count]
   end
 
+  def employability
+    @data[:employability]
+  end
+
+  def nationality
+    @data[:nationality]
+  end
+
+  def income
+    @data[:income]
+  end
+
+  def email
+    @data[:email]
+  end
   
+
 
   def render
     ERB.new(@template).result(binding)

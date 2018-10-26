@@ -5,8 +5,11 @@ load 'visit_counter.rb'
 load 'app.rb'
 
 
+
+
 require File.expand_path '../admin.rb', __FILE__
 
+use Rack::Static, :urls => ['/stylesheet/style.css'], :root => 'public'
 
 
 run Admin.new
