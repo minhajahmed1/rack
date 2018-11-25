@@ -4,6 +4,8 @@ class Route
       "/"  => :home,
       "/admin"  => :admin,
       "/authentication" => :authentication,
+      "/check" => :check
+
     },
     "POST" => {
       "/" => :check

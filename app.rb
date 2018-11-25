@@ -25,18 +25,13 @@ class App
     end
     template = Template.new(route.name, template_data)
  
- 	if env["REQUEST_METHOD"] == "POST"
-		  json = template_data.to_json
-		  open('answers.json', 'a') do |file|
-	    	file.puts json 
-	   end
-
-     
-	end
-
-
-
-
+   	if env["REQUEST_METHOD"] == "POST"
+  		  json = template_data.to_json
+  		  open('answers.json', 'a') do |file|
+  	    	file.puts json 
+        end
+    end
+ 
     [status, response_headers, [template.render]]
 
   end

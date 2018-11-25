@@ -1,4 +1,7 @@
 require 'rack'
+require_relative 'route'
+require_relative 'template'
+require_relative 'admin'
 
 class VisitCounter
 	def initialize(app)
@@ -18,6 +21,8 @@ class VisitCounter
 
 		count = request_cookies["session_count"].to_i
 		count += 1
+
+
    	response.set_cookie("session_count", count)
 
    	response.finish
