@@ -27,7 +27,9 @@
 
 
 
-
+	<% if survey_saved%>
+	thanks for taking the survey
+	<% else %>
 
 	<h1 id="title">Random Survey</h1>
 	<div class="jumbotron">
@@ -63,10 +65,10 @@
 	     </form>
 	  </div>
   </div>
+  <% end %>
 
 
 
 
-<p>Times Visited: <%= visit_count %></p>
 </body>
 </html>

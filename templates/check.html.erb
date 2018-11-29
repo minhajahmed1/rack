@@ -2,28 +2,31 @@
 <body>
 
   <div style="position:fixed; bottom: 0; left: 0;">
-    Thanks for visiting the site! <%= visit_count %>
+ 
   </div>
+  <h2><%= message%></h2>
+  <% if success %>
   <h1> <center>thank you for taking the survey!</center></h1>
   <div class="jumbotron">
     <p>
-      <%= employability %>
+      <%= survey_data[:employability] %>
     </p>
 
     <p>
-      <%= nationality %>
+      <%= survey_data[:nationality] %>
     </p>
 
     <p>
-      <%= income %>
+      <%= survey_data[:income] %>
     </p>
 
     <p>
-      <%= email %>
+      <%= survey_data[:email] %>
     </p>
   </div>
-
-
+    
+<% end %>
+<a href="/"> Go back to the homepage </a>
 
 
 

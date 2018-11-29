@@ -13,23 +13,26 @@ class Template
     @data[:visit_count]
   end
 
-  def employability
-    @data[:employability]
+  def survey_saved
+    @data[:survey_saved]
   end
 
-  def nationality
-    @data[:nationality]
+
+  def survey_data
+    @data[:survey_data]
   end
 
-  def income
-    @data[:income]
+  def message
+    @data[:message]
   end
 
-  def email
-    @data[:email]
+  def success
+    @data[:success]
   end
+
+
+
   
-
 
   def render
     ERB.new(@template).result(binding)
