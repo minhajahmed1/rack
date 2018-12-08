@@ -29,6 +29,9 @@ class Template
   def success
     @data[:success]
   end
+  def answers
+    @data[:answers]
+  end
 
 
 

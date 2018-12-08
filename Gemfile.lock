@@ -1,6 +1,10 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    domain_name (0.5.20180417)
+      unf (>= 0.0.5, < 1.0.0)
+    http-cookie (1.0.3)
+      domain_name (~> 0.5)
     mustermann (1.0.3)
     rack (2.0.5)
     rack-protection (2.0.4)
@@ -12,11 +16,15 @@ GEM
       rack-protection (= 2.0.4)
       tilt (~> 2.0)
     tilt (2.0.8)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.7.5)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  http-cookie
   rack
   rake
   sinatra

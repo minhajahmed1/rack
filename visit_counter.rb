@@ -1,7 +1,6 @@
 require 'rack'
 require_relative 'route'
 require_relative 'template'
-require_relative 'admin'
 
 class VisitCounter
 	def initialize(app)

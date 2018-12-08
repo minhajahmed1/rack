@@ -1,16 +1,17 @@
 require 'rack'
 require 'cgi'
 require 'json'
+require 'http-cookie'
 require_relative 'route'
 require_relative 'template'
-require_relative 'admin'
+require_relative 'authentication'
 
 
 class App
   # method recieves an arguement from rack and returns http response object
   def call(env)
+    request = Rack::Request.new(env)
     response_headers = {}
-    request_cookies = Rack::Utils.parse_cookies(env)
     route = Route.new(env)
     status = route.name =~ /^\d\d\d$/ ? route.name.to_i : 200
     template_data = {}
@@ -30,15 +31,16 @@ class App
           end
           template_data[:message] = "Survey saved"
           template_data[:success] = true
-          response.set_cookie("survey_saved", true)
+          survey_cookie = HTTP::Cookie.new("survey_saved", "true" , path: '/')
+          response_headers['Set-Cookie'] = survey_cookie.set_cookie_value
         else
           template_data[:message] = "Email already exists"
           template_data[:success] = false 
         end
         template_data[:survey_data] =  survey_data 
     end
-    template_data[:survey_saved] = request_cookies["survey_saved"]
- 
+    template_data[:survey_saved] = request.cookies["survey_saved"]
+    template_data[:answers] = existing_answers
     [status, response_headers, [template.render]]
 
   end

@@ -7,6 +7,27 @@
 
 
 	<h1 id="name"> hi</h1>
+
+	<table>
+		<tr>
+			<th> employability</th>
+			<th>nationality</th>
+			<th>income</th>
+			<th>email</th>
+		</tr>
+	<% answers.each do |person| %>
+		<tr>
+			<td> <%= person['employability']%> </td>
+			<td><%= person['nationality']%></td>
+			<td><%= person['income']%></td>
+			<td><%= person['email']%></td>
+		</tr>
+	<% end %>
+
+	</table>
+	
+
+
 </body>
 </html>
 

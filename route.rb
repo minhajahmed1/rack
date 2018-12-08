@@ -3,7 +3,6 @@ class Route
     "GET" => {
       "/"  => :home,
       "/admin"  => :admin,
-      "/check" => :check
 
     },
     "POST" => {
